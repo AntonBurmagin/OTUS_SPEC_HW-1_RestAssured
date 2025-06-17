@@ -23,5 +23,7 @@ public class NewUser {
   private Long userStatus;
   private String username;
 
-
+  public Long getId() {
+    return (id == null ? 0L : id);
+  }
 }

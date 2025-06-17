@@ -27,4 +27,18 @@ public class PetStoreApi {
         .then()
         .log().all();
   }
+
+  public <T> ValidatableResponse post(String basePath, T bodyArg) {
+    return given(specification)
+        .basePath(basePath)
+        .body(bodyArg)
+        .log().all()
+        .when()
+        .post()
+        .then()
+        .log().all();
+  }
+
+
+
 }
