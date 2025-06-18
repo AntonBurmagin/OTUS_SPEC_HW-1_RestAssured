@@ -8,8 +8,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateUserResponse {
-    private Long code;
-    private String message;
-    private String type;
+  private Long code;
+  private String message;
+  private String type;
+
+  public String getMessage(){
+    return message;
+  }
+
+  public Long getCode(){
+    return code;
+  }
+
+  public String getType(){
+    return type;
+  }
 
 }

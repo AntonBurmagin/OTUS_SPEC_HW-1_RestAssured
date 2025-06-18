@@ -1,9 +1,9 @@
-package dataProvider;
+package dataprovider;
 
 import org.junit.jupiter.params.provider.Arguments;
 import user.NewUser;
-
 import java.util.stream.Stream;
+
 
 public class DataProvider {
 

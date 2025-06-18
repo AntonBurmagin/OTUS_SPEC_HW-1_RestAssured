@@ -1,4 +1,4 @@
-package userTests;
+package userpage;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +11,8 @@ public class CreateUser_Test {
   private UserPage page = new UserPage();
 
 
-  //создание пользователя с полной информацией
+  //Создание пользователя с полной информацией.
+  //Проверка формы ответа.
   @Test
   void createUserPositiveTest(){
     NewUser user = NewUser.builder()
@@ -27,9 +28,10 @@ public class CreateUser_Test {
   }
 
 
-  //параметризированный тест: создание пользователя с неполными данными
+  //Параметризированный тест: создание пользователя с неполными данными.
+  //Проверка схемы, времени отклика, данных пользователя.
   @ParameterizedTest
-  @MethodSource("dataProvider.DataProvider#provideNewUsers")
+  @MethodSource("dataprovider.DataProvider#provideNewUsers")
   void createIncompleteUserTest(NewUser user){
     page.createUserResponseShouldMatchSchema(user);
   }

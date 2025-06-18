@@ -1,12 +1,11 @@
 package services;
 
+import static io.restassured.RestAssured.given;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
-import user.NewUser;
 
-import static io.restassured.RestAssured.given;
 
 public class PetStoreApi {
   private RequestSpecification specification;
@@ -17,16 +16,6 @@ public class PetStoreApi {
         .contentType(ContentType.JSON);
   }
 
-  public ValidatableResponse createUser(NewUser user) {
-    return given(specification)
-        .basePath("/user")
-        .body(user)
-        .log().all()
-        .when()
-        .post()
-        .then()
-        .log().all();
-  }
 
   public <T> ValidatableResponse post(String basePath, T bodyArg) {
     return given(specification)
@@ -35,6 +24,30 @@ public class PetStoreApi {
         .log().all()
         .when()
         .post()
+        .then()
+        .log().all();
+  }
+
+  public <T> ValidatableResponse get(String basePath, String paramName,String pathParam) {
+    String p = String.format("%s/{%s}", basePath, paramName);
+    return given(specification)
+        .basePath(p)
+        .pathParam(paramName, pathParam)
+        .log().all()
+        .when()
+        .get()
+        .then()
+        .log().all();
+  }
+
+  public <T> ValidatableResponse delete(String basePath, String paramName,String pathParam) {
+    String p = String.format("%s/{%s}", basePath, paramName);
+    return given(specification)
+        .basePath(p)
+        .pathParam(paramName, pathParam)
+        .log().all()
+        .when()
+        .delete()
         .then()
         .log().all();
   }
