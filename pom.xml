@@ -20,6 +20,7 @@
     <lombok.version>1.18.38</lombok.version>
     <rest-assured.version>5.5.1</rest-assured.version>
     <jackson.version>1.9.13</jackson.version>
+    <json-schema.version>5.5.0</json-schema.version>
 
     <compiler.version>3.13.0</compiler.version>
     <surefire.version>3.5.2</surefire.version>
@@ -81,7 +82,7 @@
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>json-schema-validator</artifactId>
-      <version>5.5.0</version>
+      <version>${json-schema.version}</version>
     </dependency>
   </dependencies>
 
@@ -94,6 +95,13 @@
         <configuration>
           <target>${maven.compiler.target}</target>
           <source>${maven.compiler.source}</source>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
         </configuration>
       </plugin>
       <plugin>
