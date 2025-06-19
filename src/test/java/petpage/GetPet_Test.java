@@ -36,8 +36,8 @@ public class GetPet_Test {
   //Проверка ответа на статус 404.
   @Test
   void getNonExistentPetTest() {
-    page.deletePetById(12358132134L);
-    ValidatableResponse nonExistentPetResponse = page.getPetById(12358132134L);
+    page.deletePetById(12358132133L);
+    ValidatableResponse nonExistentPetResponse = page.getPetById(12358132133L);
     page.getNonExistentPetShouldNotBeFound(nonExistentPetResponse);
   }
 
