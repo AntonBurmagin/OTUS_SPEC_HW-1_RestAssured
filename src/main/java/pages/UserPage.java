@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
 import annotations.BasePath;
+import exceptions.UserNameNotFoundException;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 import org.apache.hc.core5.http.HttpStatus;
@@ -17,7 +18,24 @@ public class UserPage extends AbsBasePage {
   String basePath = getBasePath();
 
   public ValidatableResponse createUser(NewUser user) {
+    if (user.getUsername() == null)
+      throw new UserNameNotFoundException("Username field required for post user request: " + user);
     return api.post(basePath, user);
+  }
+
+  public ValidatableResponse getUserByUsername(String username){
+    ValidatableResponse response = api.get(basePath, "username", username);
+    try {
+      response.extract().as(NewUser.class);
+      return response;
+    } catch (Exception e) {
+      throw new RuntimeException("GetUser request results with Exception. Couldn't get user by username: " + username);
+    }
+  }
+
+  public void getUserShouldBeEqualTo(ValidatableResponse getUser, NewUser created) {
+    NewUser receivedUser = getUser.extract().as(NewUser.class);
+    assertThat(receivedUser).isEqualTo(created);
   }
 
   public void assertCreateUserResponseForm(NewUser user) {

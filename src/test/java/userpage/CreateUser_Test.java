@@ -22,18 +22,23 @@ public class CreateUser_Test {
         .id(313L)
         .phone("+7(953)933-63-53")
         .userStatus(2L)
+        .username("SanAntonio")
         .build();
 
     page.assertCreateUserResponseForm(user);
+    page.getUserShouldBeEqualTo(page.getUserByUsername(user.getUsername()), user);
   }
 
 
   //Параметризированный тест: создание пользователя с неполными данными.
   //Проверка схемы, времени отклика, данных пользователя.
+  // Get запрос по username возвращает пользователя, соответствующего созданному.
   @ParameterizedTest
   @MethodSource("dataprovider.DataProvider#provideNewUsers")
   void createIncompleteUserTest(NewUser user){
+    page.createUser(user);
     page.createUserResponseShouldMatchSchema(user);
+    page.getUserShouldBeEqualTo(page.getUserByUsername(user.getUsername()), user);
   }
 
 

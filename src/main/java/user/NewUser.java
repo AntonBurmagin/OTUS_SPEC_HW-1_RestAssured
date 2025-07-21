@@ -15,14 +15,20 @@ import lombok.NoArgsConstructor;
 public class NewUser {
   private String email;
   private String firstName;
-  private Long id;
+  @Builder.Default
+  private Long id = 0L;
   private String lastName;
   private String password;
   private String phone;
-  private Long userStatus;
+  @Builder.Default
+  private Long userStatus = 0L;
   private String username;
 
-  public Long getId() {
-    return (id == null ? 0L : id);
-  }
+//  public Long getId() {
+//    return (id == null ? 0L : id);
+//  }
+//
+//  public Long getUserStatus() {
+//    return (userStatus == null ? 0L : userStatus);
+//  }
 }

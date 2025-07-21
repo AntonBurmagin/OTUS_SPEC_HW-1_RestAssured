@@ -29,7 +29,7 @@ public class GetPet_Test {
 
     ValidatableResponse getPetResponse = page.getPetById(12358132134L);
     page.getPetResponseShouldMatchSchema(getPetResponse);
-    page.getPetResponseShouldBeEqualToCreatedPet(getPetResponse, pet);
+    page.getPetResponseShouldBeEqualTo(getPetResponse, pet);
   }
 
   //Get запрос НЕсуществующего животного.

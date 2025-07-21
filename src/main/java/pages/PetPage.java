@@ -36,7 +36,7 @@ public class PetPage extends AbsBasePage {
         .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("schemas/getPetResponse.json"));
   }
 
-  public void getPetResponseShouldBeEqualToCreatedPet(ValidatableResponse getPetResponse, NewPet created) {
+  public void getPetResponseShouldBeEqualTo(ValidatableResponse getPetResponse, NewPet created) {
     NewPet receivedPet = getPetResponse.extract().as(NewPet.class);
     assertThat(receivedPet).isEqualTo(created);
   }
