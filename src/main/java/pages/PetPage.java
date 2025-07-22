@@ -9,11 +9,16 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 import org.apache.hc.core5.http.HttpStatus;
 import pet.NewPet;
+import services.PetStoreApi;
 
 
 @BasePath("/pet")
 public class PetPage extends AbsBasePage {
   String basePath = getBasePath();
+
+  public PetPage(PetStoreApi api){
+    super(api);
+  }
 
   public ValidatableResponse getPetById(Long id){
     String pathParam = Long.toString(id);

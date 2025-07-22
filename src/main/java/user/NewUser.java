@@ -24,11 +24,4 @@ public class NewUser {
   private Long userStatus = 0L;
   private String username;
 
-//  public Long getId() {
-//    return (id == null ? 0L : id);
-//  }
-//
-//  public Long getUserStatus() {
-//    return (userStatus == null ? 0L : userStatus);
-//  }
 }

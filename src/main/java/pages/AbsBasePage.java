@@ -4,8 +4,11 @@ import annotations.BasePath;
 import services.PetStoreApi;
 
 public abstract class AbsBasePage {
-  protected PetStoreApi api = new PetStoreApi();
-
+  protected PetStoreApi api = null;
+  
+  public AbsBasePage(PetStoreApi api) {
+    this.api = api;
+  }
 
   protected String getBasePath() {
     Class cl = this.getClass();

@@ -9,6 +9,7 @@ import exceptions.UserNameNotFoundException;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.ValidatableResponse;
 import org.apache.hc.core5.http.HttpStatus;
+import services.PetStoreApi;
 import user.CreateUserResponse;
 import user.NewUser;
 
@@ -16,6 +17,10 @@ import user.NewUser;
 @BasePath("/user")
 public class UserPage extends AbsBasePage {
   String basePath = getBasePath();
+
+  public UserPage(PetStoreApi api){
+    super(api);
+  }
 
   public ValidatableResponse createUser(NewUser user) {
     if (user.getUsername() == null)

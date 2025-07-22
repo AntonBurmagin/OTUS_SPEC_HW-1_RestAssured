@@ -5,9 +5,11 @@ import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
+import javax.annotation.concurrent.Immutable;
+import java.lang.annotation.Annotation;
 
 
-public class PetStoreApi {
+public class PetStoreApi implements Immutable {
   private RequestSpecification specification;
 
   public PetStoreApi() {
@@ -53,5 +55,8 @@ public class PetStoreApi {
   }
 
 
-
+  @Override
+  public Class<? extends Annotation> annotationType() {
+    return null;
+  }
 }

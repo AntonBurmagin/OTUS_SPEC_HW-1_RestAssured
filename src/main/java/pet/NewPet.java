@@ -1,10 +1,8 @@
 package pet;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -18,8 +16,10 @@ public class NewPet {
   private Long id;
   private String name;
   @Builder.Default
-  private List<String> photoUrls = List.of();
+  private List<String> photoUrls = Collections.unmodifiableList(List.of());
   private String status;
   @Builder.Default
   private List<PetTag> tags = List.of();
+
+
 }

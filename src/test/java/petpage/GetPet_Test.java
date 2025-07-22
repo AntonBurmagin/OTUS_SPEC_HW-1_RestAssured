@@ -1,16 +1,21 @@
 package petpage;
 
+import com.google.inject.Inject;
+import extensions.UIExtension;
 import io.restassured.response.ValidatableResponse;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import pages.PetPage;
 import pet.PetCategory;
 import pet.NewPet;
 import pet.PetTag;
 import java.util.List;
 
-
+@ExtendWith(UIExtension.class)
 public class GetPet_Test {
-  PetPage page = new PetPage();
+
+  @Inject
+  public PetPage page;
 
   //Get запрос существующего животного.
   //Проверка ответа на соответствие схеме; соответствие данным созданного животного.
