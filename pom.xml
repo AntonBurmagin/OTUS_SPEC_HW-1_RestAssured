@@ -22,6 +22,7 @@
     <jackson.version>1.9.13</jackson.version>
     <json-schema.version>5.5.0</json-schema.version>
     <guice.version>7.0.0</guice.version>
+    <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
 
 
     <compiler.version>3.13.0</compiler.version>
@@ -89,6 +90,11 @@
       <groupId>com.google.inject</groupId>
       <artifactId>guice</artifactId>
       <version>${guice.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.github.spotbugs</groupId>
+      <artifactId>spotbugs-annotations</artifactId>
+      <version>${spotbugs-annotations.version}</version>
     </dependency>
   </dependencies>
 
